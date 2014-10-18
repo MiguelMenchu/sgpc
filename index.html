@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Logion Asesor</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>Bienvenidos</h1>
+				<p><h2>Gestion Cartera</h2></p>
+			</div>
+		</div>
+	<div class="col-xs-4"></div>
+	<div class="col-xs-4">
+		<form action="controlador.php" method="POST" role="form">
+			<legend>Gestionar cartera</legend>
+		
+			<div class="form-group">
+				<label for="asesor">Asesor</label>
+				<input type="text" class="form-control" id="asesor" placeholder="Usuario Asesor" name="asesor"> <br>
+				<label for="passwordasesor">Password</label>
+				<input type="password" name="passwordasesor" id="passwordasesor" placeholder="Password Asesor" class="form-control" required="required" title="">
+			</div>
+
+			<button type="submit" class="btn btn-primary">Enviar</button>
+		</form>
+
+
+	</div>
+	<div class="col-xs-4"></div>
+		
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>
