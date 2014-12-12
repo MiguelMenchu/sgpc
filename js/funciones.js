@@ -1,5 +1,6 @@
 $(document).on('ready',cargar);
 
+
 function cargar(){
 	$("#inicialrecurrentes").on('click',iniciar);
 	$("#abnuevos").on('click',iniciar);
