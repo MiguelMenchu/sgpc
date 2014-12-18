@@ -9,32 +9,21 @@
 
 	<title>Cartera Nueva</title>
 
-<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="js/funciones.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="js/funciones.js"></script>
+
+
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>    
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-	<link rel="stylesheet" href="css/bootstrap.css">
-    
-	
-	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/themes/base/jquery-ui.css" />
-
-
 <!--PQ Grid files-->
     <link rel="stylesheet" href="pqgrid.min.css" />
     <script src="pqgrid.min.js"></script>
 <!--PQ Grid Office theme-->
     <link rel="stylesheet" href="grid/themes/office/pqgrid.css" />
 
-	
 
-
-
-	  <script type="text/javascript">
-            $(document).ready(function () {              
-                var countries = new Array("200","100");
-                $("#input").jqxInput({placeHolder: "Clientes Iniciales", height: 25, width: 200, minLength: 1,  source: countries });
-            });
-        </script>
 
    
 
@@ -100,12 +89,8 @@
 
 	<div class="row">
 			<div class="col-xs-12">
-
-				<div id="grid_array" style="margin:100px;">
-					<input type="text" id="input"/>
-				</div>
+				<div id="grid_array" style="margin:100px;"></div>
 	<div class="container">		
-
 	</div>
 	</div>
 	</div>

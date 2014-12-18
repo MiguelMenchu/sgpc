@@ -9,14 +9,9 @@ function cargar(){
  	alert("Eliga en programa disponible");
  }
  else{
- document.getElementById('grid_array').style.display='block';
-
-          
-$(function () {     
- var countries = new Array("200", "100");
- $("#input").jqxInput({placeHolder: "Clientes Iniciales", height: 25, width: 100, minLength: 1,  source: countries });       
-        
-        var data = [['saldo 2014',,,,,,,,,,,,],
+  document.getElementById('grid_array').style.display='block';
+$(function () {          
+         	var data = [['saldo 2014',,,,,,,,,,,,],
             ["ene 2015",,,,,,,,,,,,],
 			["mar 2015",,,,,,,,,,,,],
 			["abr 2015",,,,,,,,,,,,],
@@ -59,15 +54,14 @@ $(function () {
        				data[i][j] = 0;
        		};
        	};
-       
-      obj.dataModel = { data: data };
+    
+
+      	obj.dataModel = { data: data };
         var $grid = $("#grid_array").pqGrid(obj);
         $("#grid_array").pqGrid({editModel:{clicksToEdit: 2,saveKey:13 }});
-        var colM=$( "#grid_array" ).pqGrid( "option" , "colModel" );
-        colM[0][1].editable=false;
-
-
+        
        $grid.on( "pqgridcellsave", function()   {
+
 			var j = 1;
       		for (var i = 1; i < 12; i++) {
        		//Crecimiento mensual clientes
@@ -99,12 +93,12 @@ $(function () {
 });
 }
 }
+
+
+
+
+
 /*
-
-
-
-
-
 
 
 XMLHTTPx
