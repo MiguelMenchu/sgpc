@@ -4,7 +4,7 @@ class conexion
 	var $conexionservidor;
 	function __construct($database){
 		$conexion = false;
-		if($this->conexionservidor = mysql_connect("mysql.hostinger.mx","u183347803_migue","Jesus8")){
+		if($this->conexionservidor = mysql_connect("localhost","root","Jesus8")){
 			$conexion = true;
 			if(mysql_select_db($database,$this->conexionservidor))
 				return $conexion;

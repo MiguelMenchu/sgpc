@@ -2,112 +2,112 @@ $(document).on('ready',cargar);
 
 
 function cargar(){
-	$("#inicialrecurrentes").on('click',iniciar);
-	$("#abnuevos").on('click',iniciar);
-	$("#dicertar").on('click',iniciar);
-	$("#brecurrentes").on('click',iniciar);
-	$("#bnuevos").on('click',iniciar);
 
+ var tipoprograma = $("#tipoprograma").val();
+ if(tipoprograma == 0){
+ 	document.getElementById('grid_array').style.display='none';
+ 	alert("Eliga en programa disponible");
+ }
+ else{
+ document.getElementById('grid_array').style.display='block';
+
+          
+$(function () {     
+ var countries = new Array("200", "100");
+ $("#input").jqxInput({placeHolder: "Clientes Iniciales", height: 25, width: 100, minLength: 1,  source: countries });       
+        
+        var data = [['saldo 2014',,,,,,,,,,,,],
+            ["ene 2015",,,,,,,,,,,,],
+			["mar 2015",,,,,,,,,,,,],
+			["abr 2015",,,,,,,,,,,,],
+			["may 2015",,,,,,,,,,,,],
+			["jun 2015",,,,,,,,,,,,],
+			["jul 2015",,,,,,,,,,,,],
+			["Ago 2015",,,,,,,,,,,,],
+			["sep 2015",,,,,,,,,,,,],
+			["oct 2015",,,,,,,,,,,,],
+			["nov 2015",,,,,,,,,,,,],
+			["dic 2015",,,,,,,,,,,,],
+			["totales 2015",,,,,,,,,,,,],
+			["extras 2015",,,,,,,,,,,,]];
+
+		
+		//alert("Acabo de comprobar que si es indefinida y ahora la tengo que igualar a cero");
+
+        var obj = { width: 1095, height: 447, title: "Operaciones del anio 2015",resizable:false,draggable:true };
+        obj.colModel = [{ title: "Fecha", width: 86, dataType: "string", align: "center", editable: false},
+        { title: "Saldos", width: 65, dataType: "integer", align: "center", editable: true},
+        { title: "Crecimiento Mensual", width: 86, dataType: "integer", align: "center", editable: false },
+        { title: "Total Casos", width: 86, dataType: "integer", align: "center", editable: false },
+        { title: "Nuevos", width: 65, dataType: "integer", align: "center"},
+        { title: "Recreditos", width: 86, dataType: "integer", align: "center" },
+        { title: "Retiros", width: 65, dataType: "integer", align: "center"},
+        { title: "Saldo Nuevos", width: 86, dataType: "integer", align: "center"},
+        { title: "saldo Recurrentes", width: 86, dataType: "integer", align: "center"},
+        { title: "Saldos", width: 65, dataType: "integer", align: "center",  editable: true},
+        { title: "Desembolsos", width: 86, dataType: "integer", align: "center", editable: false},
+        { title: "Recuperacion", width: 86, dataType: "integet", align: "center"},
+        { title: "Crecimiento Mensual", width: 86, dataType: "integer", align: "center", editable: false}];
+        obj.dataModel = { data: data };
+        var $grid = $("#grid_array").pqGrid(obj);
+        $("#grid_array").pqGrid({editModel:{clicksToEdit: 2,saveKey:13 }});
+
+       // alert("Jesus mi mejor amigo");
+      for (var i = 0; i < 12; i++) {
+       		for (var j = 1; j <=12; j++) { 
+       			if (typeof(data[i][j]) == "undefined")
+       				data[i][j] = 0;
+       		};
+       	};
+       
+      obj.dataModel = { data: data };
+        var $grid = $("#grid_array").pqGrid(obj);
+        $("#grid_array").pqGrid({editModel:{clicksToEdit: 2,saveKey:13 }});
+        var colM=$( "#grid_array" ).pqGrid( "option" , "colModel" );
+        colM[0][1].editable=false;
+
+
+       $grid.on( "pqgridcellsave", function()   {
+			var j = 1;
+      		for (var i = 1; i < 12; i++) {
+       		//Crecimiento mensual clientes
+       		data[i][j+1]=data[i][j+3]-data[i][j+5];
+       		//Saldos clientes agricola
+       		data[i][j]=parseInt(data[i-1][j])+parseInt(data[i][j+1]);
+       		//alert("Hola mundo amigo");
+       		//Total casos 
+       		data[i][j+2]=parseInt(data[i][j+3])+parseInt(data[i][j+4]);
+       		//Desembolsos
+       		data[i][j+9]=parseInt(data[i][j+6])+parseInt(data[i][j+7]);
+       		//Saldos montos agricola
+       		data[i][j+8]=(parseInt(data[i-1][j+8])+parseInt(data[i][j+9]))-parseInt(data[i][j+10]); 
+       		//Crecimiento mensual montos
+       		data[i][j+11]=parseInt(data[i][j+9])-parseInt(data[i][j+10]);
+       		//alert("Estoy listo para iniciar a realizar los calculos");
+       		obj.dataModel = { data: data };
+        	var $grid = $("#grid_array").pqGrid(obj);
+        	$("#grid_array").pqGrid({editModel:{clicksToEdit: 2,saveKey:13 }});
+       	}
+       }
+        //var dataType = alineacion[0].dataType;
+        //alert("The type data of the one column is "+dataType);
+
+
+    );
+
+	
+});
 }
+}
+/*
 
-function iniciar(){
-	var divtotalclientes = [$("#ssinicial"),$("#senero"),$("#sfebrero"),
-	$("#smarzo"),$("#sabril"),$("#smayo"),
-	$("#sjunio"),$("#sjulio"),$("#sagosto"),
-	$("#sseptiembre"),$("#soctubre"),$("#snoviembre"),
-	$("#sdiciembre")];
 
-	var divtotalclientesmes = [$("#tssinicial"),$("#tsenero"),$("#tsfebrero"),
-	$("#tsmarzo"),$("#tsabril"),$("#tsmayo"),
-	$("#tsjunio"),$("#tsjulio"),$("#tsagosto"),
-	$("#tsseptiembre"),$("#tsoctubre"),$("#tsnoviembre"),
-	$("#tsdiciembre")];
 
-	var divcrecimientomensual = [$("#cssinicial"),$("#csenero"),$("#csfebrero"),
-	$("#csmarzo"),$("#csabril"),$("#csmayo"),
-	$("#csjunio"),$("#csjulio"),$("#csagosto"),
-	$("#csseptiembre"),$("#csoctubre"),$("#csnoviembre"),
-	$("#csdiciembre")];
 
-	var divmontosnuevos = [$("#mssinicial"),$("#msenero"),$("#msfebrero"),
-	$("#msmarzo"),$("#msabril"),$("#msmayo"),
-	$("#msjunio"),$("#msjulio"),$("#msagosto"),
-	$("#msseptiembre"),$("#msoctubre"),$("#msnoviembre"),
-	$("#msdiciembre")];
 
-	var divdesembolsos = [$("#dssinicial"),$("#dsenero"),$("#dsfebrero"),
-	$("#dsmarzo"),$("#dsabril"),$("#dsmayo"),
-	$("#dsjunio"),$("#dsjulio"),$("#dsagosto"),
-	$("#dsseptiembre"),$("#dsoctubre"),$("#dsnoviembre"),
-	$("#dsdiciembre")];
 
-	var divrecuperacion = [$("#rssinicial"),$("#rsenero"),$("#rsfebrero"),
-	$("#rsmarzo"),$("#rsabril"),$("r#smayo"),
-	$("#rsjunio"),$("#rsjulio"),$("#rsagosto"),
-	$("#rsseptiembre"),$("#rsoctubre"),$("#rsnoviembre"),
-	$("#rsdiciembre")];
 
-	var clientesnuevos = [parseInt($("#cenero").val()),parseInt($("#cfebrero").val()),
-	parseInt($("#cmarzo").val()),parseInt($("#cabril").val()),parseInt($("#cmayo").val()),
-	parseInt($("#cjunio").val()),parseInt($("#cjulio").val()),parseInt($("#cagosto").val()),
-	parseInt($("#cseptiembre").val()),parseInt($("#coctubre").val()),parseInt($("#cnoviembre").val()),
-	parseInt($("#cdiciembre").val())];
-
-	var clientesnuevosagricola = [parseInt($("#acenero").val()),parseInt($("#acfebrero").val()),
-	parseInt($("#acmarzo").val()),parseInt($("#acabril").val()),parseInt($("#acmayo").val()),
-	parseInt($("#acjunio").val()),parseInt($("#acjulio").val()),parseInt($("#acagosto").val()),
-	parseInt($("#acseptiembre").val()),parseInt($("#acoctubre").val()),parseInt($("#acnoviembre").val()),
-	parseInt($("#acdiciembre").val())];
-
-	var clientesrecurrentes = [parseInt($("#clientesinicialesrecurrentes").val()),parseInt($("#cenerorecurrentes").val()),
-	parseInt($("#cfebrerorecurrentes").val()),parseInt($("#cmarzorecurrentes").val()),
-	parseInt($("#cabrilrecurrentes").val()),parseInt($("#cmayorecurrentes").val()),
-	parseInt($("#cjuniorecurrentes").val()),parseInt($("#cjuliorecurrentes").val()),
-	parseInt($("#cagostorecurrentes").val()),parseInt($("#cseptiembrerecurrentes").val()),
-	parseInt($("#coctubrerecurrentes").val()),parseInt($("#cnoviembrerecurrentes").val()),
-	parseInt($("#cdiciembrerecurrentes").val())];
-	
-	var clientesdisercion = [parseInt($("#cdenero").val()),
-	parseInt($("#cdfebrero").val()),parseInt($("#cdmarzo").val()),
-	parseInt($("#cdabril").val()),parseInt($("#cdmayo").val()),
-	parseInt($("#cdjunio").val()),parseInt($("#cdjulio").val()),
-	parseInt($("#cdagosto").val()),parseInt($("#cdseptiembre").val()),
-	parseInt($("#cdoctubre").val()),parseInt($("#cdnoviembre").val()),
-	parseInt($("#cddiciembre").val())];
-
-	var montosnuevos = [parseInt($("#montonuevoenero").val()),
-	parseInt($("#montonuevofebrero").val()),parseInt($("#montonuevomarzo").val()),
-	parseInt($("#montonuevoabril").val()),parseInt($("#montonuevomayo").val()),
-	parseInt($("#montonuevojunio").val()),parseInt($("#montonuevojulio").val()),
-	parseInt($("#montonuevoagosto").val()),parseInt($("#montonuevoseptiembre").val()),
-	parseInt($("#montonuevooctubre").val()),parseInt($("#montonuevonoviembre").val()),
-	parseInt($("#montonuevodiciembre").val())];
-
-	var montosnuevosagricola = [parseInt($("#amontonuevoenero").val()),
-	parseInt($("#amontonuevofebrero").val()),parseInt($("#amontonuevomarzo").val()),
-	parseInt($("#amontonuevoabril").val()),parseInt($("#amontonuevomayo").val()),
-	parseInt($("#amontonuevojunio").val()),parseInt($("#amontonuevojulio").val()),
-	parseInt($("#amontonuevoagosto").val()),parseInt($("#amontonuevoseptiembre").val()),
-	parseInt($("#amontonuevooctubre").val()),parseInt($("#amontonuevonoviembre").val()),
-	parseInt($("#amontonuevodiciembre").val())];
-
-	var montosrecurrentes = [parseInt($("#montonuevorecurrente").val()),parseInt($("#emontorecurrente").val()),
-	parseInt($("#fmontorecurrente").val()),parseInt($("#mmontorecurrente").val()),
-	parseInt($("#amontorecurrente").val()),parseInt($("#mymontorecurrente").val()),
-	parseInt($("#jmontorecurrente").val()),parseInt($("#jlmontorecurrente").val()),
-	parseInt($("#agmontorecurrente").val()),parseInt($("#smontorecurrente").val()),
-	parseInt($("#omontorecurrente").val()),parseInt($("#nmontorecurrente").val()),
-	parseInt($("#dmontorecurrente").val())];
-
-	var recuperaciones = [parseInt($("#re").val()),
-	parseInt($("#rf").val()),parseInt($("#rm").val()),
-	parseInt($("#ra").val()),parseInt($("#rmy").val()),
-	parseInt($("#rj").val()),parseInt($("#rjl").val()),
-	parseInt($("#rag").val()),parseInt($("#rs").val()),
-	parseInt($("#ro").val()),parseInt($("#rn").val()),
-	parseInt($("#rd").val())];
-
-	
+XMLHTTPx
 	var saldo = 0;
 	var totalmes;
 	var crecimientomensaual;
@@ -222,7 +222,7 @@ else{
 		alert("lA funcion isNaN no funciona");//*/
 	//alert("El valor cuando no tiene nada es "+montosrecurrentes[0]);
 
-}
+
 
 function ajaxget(){
 	var pprograma = parseInt($("#pprograma").val());
@@ -318,7 +318,7 @@ function tipopresupuesto(){
 
 
 $(function () {
-	alert("Hola mundo");
+	
     var columns = [
         { title: "Order ID", width: 100, dataIndx: "OrderID" },
         { title: "Customer Name", width: 130, dataIndx: "CustomerName" },

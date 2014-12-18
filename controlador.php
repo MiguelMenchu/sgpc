@@ -6,7 +6,7 @@
 
 	if (isset($_POST["programa"])) {
 		if (isset($_SESSION["passwordasesor"])) {
-				$db="u183347803_bdgpc";
+				$db="sgpc";
 		$conexionn = new conexion($db);
 		$presupuesto2014 = new presupuesto();
 		$programa=$_POST["programa"];
@@ -71,7 +71,7 @@
 
 
 if(isset($_POST["asesor"])){
-$db="u183347803_bdgpc";
+$db="sgpc";
 $_SESSION["asesor"] = $_POST["asesor"];
 $_SESSION["passwordasesor"] = $_POST["passwordasesor"];
 $conexionn = new conexion($db);
@@ -92,7 +92,7 @@ if($conexionn){
   }
 }
 function asesor($passwordasesor){
-	$conexion = new conexion("u183347803_bdgpc");
+	$conexion = new conexion("sgpc");
 	if(!$conexion){
 		echo "Error el la conexion al servidor";
 	}
@@ -131,7 +131,7 @@ function datosasesor($dato){
 }
 
 if (isset($_GET["pprograma"]) && isset($_GET["ptipocliente"]) && isset($_SESSION["passwordasesor"])) {
-		$db="u183347803_bdgpc";
+		$db="sgpc";
 		$conexionn = new conexion($db);
 		$pprograma = $_GET["pprograma"];
 		$ptipocliente = $_GET["ptipocliente"];
@@ -219,7 +219,7 @@ if (isset($_GET["pprograma"]) && isset($_GET["ptipocliente"]) && isset($_SESSION
 	// Inicia reporte para los montos respecificos
 
 if (isset($_GET["pprogramamontos"]) && isset($_GET["ptipoclientemontos"]) && isset($_SESSION["passwordasesor"])) {
-		$db="u183347803_bdgpc";
+		$db="sgpc";
 		$conexionn = new conexion($db);
 		$pprograma = $_GET["pprogramamontos"];
 		$ptipocliente = $_GET["ptipoclientemontos"];
